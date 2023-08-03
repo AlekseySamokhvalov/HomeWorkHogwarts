@@ -1,36 +1,16 @@
 public class Slytherin extends Hogwarts {
-    private String name;
-    private String surname;
     private int cunning; // Хитрость
     private int determination; // решительность
     private int ambition; // амбициозность
     private int resourcefulness; // находчивость
     private int lustForPower; // жажда власти
-    public Slytherin(int magicPower, int transgressionDistance, String name, String surname, int cunning, int determination, int ambition, int resourcefulness, int lustForPower) {
-        super(magicPower, transgressionDistance);
-        this.name = name;
-        this.surname = surname;
+    public Slytherin(String faculty, int magicPower, int transgressionDistance, String name, String surname, int cunning, int determination, int ambition, int resourcefulness, int lustForPower) {
+        super(faculty, magicPower, transgressionDistance, name, surname);
         this.cunning = cunning;
         this.determination = determination;
         this.ambition = ambition;
         this.resourcefulness = resourcefulness;
         this.lustForPower = lustForPower;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public int getCunning() {
@@ -74,31 +54,12 @@ public class Slytherin extends Hogwarts {
     }
 
     @Override
+    int totalPoints() {
+        return cunning + determination + ambition + resourcefulness + lustForPower;
+    }
+
+    @Override
     public String toString() {
-        return "Слизерин{ " + name + ' ' + surname +
-                ", хитрость: " + cunning +
-                ", решительность :" + determination +
-                ", амбициозность: " + ambition +
-                ", находчивость: " + resourcefulness +
-                ", жажда власти" + lustForPower +
-                ", Сила магии: " + getMagicPower() +
-                ", расстояние трансгрессии: " + getTransgressionDistance() +
-                '}';
+        return super.toString() + String.format(", Хитрость: %d, Решительность: %d, Амбициозность: %d, Находчивость: %d, Жажда власти: %d", cunning, determination, ambition, resourcefulness, lustForPower);
     }
-    /*
-    public void printStudentDescription() {
-        System.out.println("Студент " + name + " из факультета Слизерин:");
-        System.out.println("Хитрость: " + cunning);
-        System.out.println("Решительность: " + determination);
-        System.out.println("Амбициозность: " + ambition);
-        System.out.println();
-    }
-
-    public static void printHouseDescription() {
-        System.out.println("Факультет Слизерин:");
-        System.out.println("У всех студентов присущи хитрость, решительность, амбициозность, находчивость и жажда власти.");
-        System.out.println();
-    }
-
- */
 }
