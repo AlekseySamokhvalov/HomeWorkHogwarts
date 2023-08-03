@@ -4,10 +4,13 @@ public class Main {
 
     static void compareStudentsByFaculty(Hogwarts student1, Hogwarts student2) {
         if (student1.getClass() == student2.getClass()) {
-            if (student1.totalPoints() > student2.totalPoints()) {
-                System.out.println("1-ый ученик лучше 2-го: " + student1.toString() + " VS " + student2.toString());
+            if(student1.totalPoints() == student2.totalPoints()){
+                System.out.println("Ученики " + student1.getName()+ " " + student1.getSurname() + ", " + student2.getName() + " " + student2.getSurname() + " обладают равной силой (" + student2.totalPoints() + ")");
+            }
+            else if (student1.totalPoints() > student2.totalPoints()) {
+                System.out.println(student1.getName()+ " " + student1.getSurname() + " (" + student1.totalPoints() + ") обладает бОльшей силой, чем " + student2.getName()+ " " + student2.getSurname() + " (" + student2.totalPoints() + ")");
             } else {
-                System.out.println("1-ый ученик хуже 2-го: " + student1.toString() + " VS " + student2.toString());
+                System.out.println(student1.getName()+ " " + student1.getSurname() + " (" + student1.totalPoints() + ") обладает меньшей силой, чем " + student2.getName()+ " " + student2.getSurname() +  " (" + student2.totalPoints() + ")");
             }
         } else {
             System.out.println("Ученики относятся к разным факультетам.");
@@ -15,10 +18,10 @@ public class Main {
     }
 
     static void compareStudentsByMagicPowerAndTransgressionDistance(Hogwarts student1, Hogwarts student2) {
-        String result = String.format("Ученик %s обладает %s мощностью магии, чем %s",
-                student1.toString(),
+        String result = String.format("Ученик %s %s обладает %s мощностью магии, чем %s",
+                student1.getName(), student1.getSurname(),
                 (student1.getMagicPower() > student2.getMagicPower()) ? "большей" : "меньшей",
-                student2.toString());
+                student2.getName()+ " " + student2.getSurname());
 
         result += student1.getTransgressionDistance() > student2.getTransgressionDistance() ? " и может трансгрессировать на большее расстояние" : " и может трансгрессировать на меньшее расстояние";
 
@@ -42,7 +45,7 @@ public class Main {
         Hufflepuff[] hufflepuffs = {
                 new Hufflepuff("Пуффендуй",45, 65, "Захария", "Смит", 55, 35, 45),
                 new Hufflepuff("Пуффендуй",25, 55, "Сердик", "Диггори", 85, 90, 35),
-                new Hufflepuff("Пуффендуй",35, 75, "Джастин", "Финч-Флетчли", 75, 15, 5)
+                new Hufflepuff("Пуффендуй",35, 75, "Джастин", "Финч-Флетчли", 75, 15, 45)
         };
 
         Ravenclaw[] ravenclaws = {
@@ -55,20 +58,23 @@ public class Main {
             System.out.println(griffindors[i].toString());
         }
 
-        for (int i = 0; i < slytherins.length; i++) {
-            System.out.println(slytherins[i].toString());
-        }
+        //for (int i = 0; i < slytherins.length; i++) {
+            System.out.println(slytherins[0].toString());
+        //}
 
-        for (int i = 0; i < hufflepuffs.length; i++) {
-            System.out.println(hufflepuffs[i].toString());
-        }
+        //for (int i = 0; i < hufflepuffs.length; i++) {
+            System.out.println(hufflepuffs[0].toString());
+        //}
 
-        for (int i = 0; i < ravenclaws.length; i++) {
-            System.out.println(ravenclaws[i].toString());
-        }
+        //for (int i = 0; i < ravenclaws.length; i++) {
+            System.out.println(ravenclaws[0].toString());
+        //}
 
         compareStudentsByFaculty(griffindors[0], griffindors[1]); // сравнение учеников по факультету
+        compareStudentsByFaculty(griffindors[0], hufflepuffs[1]);
+        compareStudentsByFaculty(hufflepuffs[2], hufflepuffs[0]);
+        compareStudentsByFaculty(ravenclaws[2], ravenclaws[1]);
         compareStudentsByMagicPowerAndTransgressionDistance(griffindors[2],slytherins[0]); // сравнение двух любых учеников Хогвартса по силе магии и расстоянию трансгрессии
-
+        compareStudentsByMagicPowerAndTransgressionDistance(hufflepuffs[0], griffindors[1]);
     }
 }
